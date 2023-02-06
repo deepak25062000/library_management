@@ -22,9 +22,11 @@ const BookList = () => {
         fetch(`  http://localhost:4000/books/${id}`, {
             method: 'DELETE'
         });
-        alert(`${title} has been deleted`)
+        alert(`${title} has been deleted....!`)
 
     }
+
+
     let navigate = useNavigate()
 
     //to fetch the Route value
