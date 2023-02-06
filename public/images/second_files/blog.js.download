@@ -1,0 +1,131 @@
+$(document).ready(function(){
+
+  function blogParallax() {
+    bodyScrollTop = $(window).scrollTop();
+    $('.blog-hero .message-block').css('top', 'calc(50% - ' + (bodyScrollTop/2.5) + 'px)');
+    $('.blog-hero').css('top', (bodyScrollTop/2.5));
+  }
+
+  function mobileBlogMenu() {
+    mobileSelectedBlog = $('.mobile-blog-page-menu').find('li:first-child a').html();
+    $('.selected-blog-item').html(mobileSelectedBlog);
+    $('.mobile-blog-page-menu div ul li a').click(function(){
+      newSelection = $(this).html();
+      $('.selected-blog-item').html(newSelection);
+      $('.selected-blog-item').toggleClass('open');
+      $('.mobile-blog-page-menu').slideToggle().toggleClass('open');
+    });
+    $('.menu-display').click(function(){
+      $('.selected-blog-item').toggleClass('open');
+      $('.mobile-blog-page-menu').slideToggle().toggleClass('open');
+    });
+  }
+
+  function mobileBlogMenuStick() {
+    if ( $('.standard-blog-wrapper').hasClass('header-image') ) {
+      bodyScrollTop = $(window).scrollTop();
+      if ( ($(window).width() < 992) && ($(window).width() > 767) ) {
+        if (bodyScrollTop >= 277) {
+          $('.blog-menu-wrapper, .standard-blog-wrapper, .breadcrumb-wrapper').addClass('fixed');
+        } else {
+          $('.blog-menu-wrapper, .standard-blog-wrapper, .breadcrumb-wrapper').removeClass('fixed');
+        }
+      } else if ($(window).width() <= 767) {
+        if (bodyScrollTop >= 264) {
+          $('.blog-menu-wrapper, .standard-blog-wrapper, .breadcrumb-wrapper').addClass('fixed');
+        } else {
+          $('.blog-menu-wrapper, .standard-blog-wrapper, .breadcrumb-wrapper').removeClass('fixed');
+        }
+      }
+    } else if ( $('.standard-blog-wrapper').hasClass('no-header-image') ) {
+      if ($(window).scrollTop() >= 0) {
+        $('.blog-menu-wrapper, .standard-blog-wrapper, .breadcrumb-wrapper').addClass('fixed');
+      } else {
+        $('.blog-menu-wrapper, .standard-blog-wrapper, .breadcrumb-wrapper').removeClass('fixed');
+      }
+    }
+  }
+
+  function blogMenuFixed() {
+    function setFixed(subtractImage) {
+      $('.standard-blog-menu ul').addClass('fixed');
+      if ( bodyScrollTop >= ($('.standard-blog-content').height() + subtractImage - $('.standard-blog-menu ul').height()) - 74 ) {
+        $('.standard-blog-menu ul').addClass('footer-fixed');
+        offsetHeight = ($('.standard-blog-content').height() - $('.standard-blog-menu ul').height() - 72);
+        $('.standard-blog-menu ul').css('top', offsetHeight);
+      } else {
+        $('.standard-blog-menu ul').removeClass('footer-fixed');
+        $('.standard-blog-menu ul').css('top', '180px');
+      }
+    }
+    function setSecondaryFixed() {
+      $('.standard-blog-menu ul').addClass('fixed');
+      if ( bodyScrollTop >= ($('.standard-blog-content').height() - $('.standard-blog-menu ul').height() - 24) ) {
+        $('.standard-blog-menu ul').addClass('footer-fixed');
+        offsetHeight = ($('.standard-blog-content').height() - $('.standard-blog-menu ul').height() - 72);
+        $('.standard-blog-menu ul').css('top', offsetHeight);
+      } else {
+        $('.standard-blog-menu ul').removeClass('footer-fixed');
+        $('.standard-blog-menu ul').css('top', '180px');
+      }
+    }
+    function unsetFixed() {
+      $('.standard-blog-menu ul').removeClass('fixed');
+      $('.standard-blog-menu ul').css('top', 0);
+    }
+
+    var bodyScrollTop = $(window).scrollTop();
+    if ( $('.standard-blog-wrapper').hasClass('header-image') ) {
+      if ($(window).width() > 1199) {
+        if (bodyScrollTop >= 558) {
+          subtractImage = 558;
+          setFixed(subtractImage);
+        } else {
+          unsetFixed();
+        }
+      } else if ( ($(window).width() <= 1199) && ($(document).width() > 991) ) {
+        if (bodyScrollTop >= 492) {
+          subtractImage = 492;
+          setFixed(subtractImage);
+        } else {
+          unsetFixed();
+        }
+      }
+    } else if ( $('.standard-blog-wrapper').hasClass('no-header-image') ) {
+      if (bodyScrollTop >= 50) {
+        setSecondaryFixed();
+      } else {
+        unsetFixed();
+      }
+    }
+  }
+
+  blogMenuFixed();
+  blogParallax();
+  mobileBlogMenu();
+  mobileBlogMenuStick();
+  $(document).scroll(function(){
+    blogMenuFixed();
+    blogParallax();
+    mobileBlogMenuStick();
+  });
+  $(window).resize(function(){
+    blogMenuFixed();
+    blogParallax();
+    mobileBlogMenuStick();
+  });
+  $('.author-link').each(function(){
+    $(this).css('color', '#727272');
+  });
+  $('.moretag').each(function(){
+    $(this).css('color', '#EB9532');
+  });
+  $('.standard-blog-content article').each(function(){
+    $(this).addClass('module');
+  });
+  
+  // OVERWRITE FOR SEARCH RESULTS MORETAG
+  $('.search-content').find('.moretag').each(function(){
+    $(this).css('color', '#019875');
+  });
+});

@@ -1,0 +1,98 @@
+.body {
+    background-position: center;
+    background-size: cover;
+    box-sizing: border-box;
+    width: fit-content;
+    background-color: black;
+}
+
+.book_container {
+    display: flex;
+    width: 700px;
+    height: 300px;
+    border: 1px solid rgb(255, 255, 255);
+    padding: 10px 6px;
+    border-radius: 7px;
+    margin: 15px;
+    color: #3B5998;
+    background-color: #DFE3EE;
+    margin-left: 450px;
+}
+
+.image img {
+    padding: 20px;
+    margin-top: 60px;
+    height: 170px;
+}
+
+.left {
+    width: 40%;
+}
+
+.right {
+    padding: 10px;
+    text-align: justify;
+    line-height: 50px;
+    padding: 1px;
+}
+
+.book_card {
+    margin: 0px 5px;
+    padding: 2px;
+
+
+}
+
+.book_card button{
+    border: none;
+    padding: 1px 20px;
+    margin: 0px 10px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px black;
+}
+.book_card button:hover{
+    background-color: rgb(164, 164, 248);
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .book_card{
+    width: 400px;
+    height: 300px;
+    border: 1px solid black;
+    display: inline-table;
+    padding: 2px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 7px rgb(219, 197, 255);
+}
+.booklist h1{
+font-size: 30px;
+}
+.book_card h1{
+    font-size: 20px;
+}
+button{
+    border-radius:7px;
+    border-color: rgb(223, 176, 255);
+    background-color: rgb(8, 8, 8);
+    color: rgb(255, 255, 255);padding: 4px 10px ;
+    box-shadow: 4px 4px 4px rgb(223, 176, 255) ;
+} */

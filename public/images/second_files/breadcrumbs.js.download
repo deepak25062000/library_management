@@ -1,0 +1,28 @@
+jQuery( window ).load(function() {
+  jQuery('.loader-wrapper').fadeOut(300);
+});
+
+jQuery( document ).ready(function() { 
+  if ( jQuery('body').hasClass('category') ) {
+    var color = 'explore';
+  } else if ( jQuery('body').hasClass('archive') ) {
+    var color = 'explore';
+  } else if ( jQuery('body').hasClass('tag') ) {
+    var color = 'explore';
+  } else {
+    var color = jQuery('body').attr('id');
+  }
+  jQuery('.breadcrumbs').find('span[property="itemListElement"]').addClass('utility');
+  jQuery('.breadcrumbs').find('span[property="itemListElement"]:first-child').addClass('first');
+  jQuery('.breadcrumbs').find('span[property="itemListElement"]:last-child').addClass('last');
+  jQuery('.breadcrumbs').find('.last a span').addClass(color);
+
+  
+    jQuery('span.utility').hover( function() {
+      if ( !jQuery(this).hasClass('last') && !jQuery(this).hasClass('first') ) {
+        jQuery('.breadcrumbs').find('span[property="itemListElement"]:last-child a').addClass('other-hovered');
+      }
+    }, function() {
+      jQuery('.breadcrumbs').find('span[property="itemListElement"]:last-child a').removeClass('other-hovered');
+    });
+});

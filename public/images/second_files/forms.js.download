@@ -1,0 +1,122 @@
+jQuery( document ).ready(function() {
+  var rowHeight = jQuery('.standard-internal-wrapper .form-row').height();
+  var menuHeight = jQuery('.form-list').height();
+
+  function titleOnLoad() {
+    jQuery('.form-list li').each(function(){
+      if( jQuery(this).hasClass('current_page_item') ) {
+        var switchText = jQuery(this).find('a').html();
+        jQuery('.current-form-title').html(switchText);
+      }
+    });
+  }
+
+  function adjustRowHeight() {
+    if( jQuery('.form-list').hasClass('open') ) {
+      jQuery('.standard-internal-wrapper .row').css('height', rowHeight + menuHeight);
+    } else {
+      jQuery('.standard-internal-wrapper .row').css('height', rowHeight);
+    }
+  }
+
+  function toggleFormList() {
+    jQuery('.form-list-wrapper, .current-form-title').toggleClass('open');
+    jQuery('.form-list').slideToggle().toggleClass('open');
+    adjustRowHeight();
+  }
+
+  function fixButtons() {
+    jQuery('.display-form').each(function(){
+      var processing = jQuery(this).find('input[value="Processing"]');
+      var submitting = jQuery(this).find('input[value="Submit"]');
+
+      submitting.closest('div').css({
+        'position': 'relative',
+        'display': 'inline-block'
+      });
+      processing.closest('div').css({
+        'position': 'relative',
+        'display': 'inline-block'
+      });
+
+      processing.closest('div').css({
+        'visibility': 'hidden'
+      });
+
+      submitting.click(function(){
+        processing.css({
+          'visibility': 'visible',
+          'padding': '0 18px'
+        });
+      });
+    });
+
+    jQuery('.form-submit').each(function(){
+      jQuery(this).after('<div class="after learn"><img src="https://greenwichlib.wpengine.com/wp-content/themes/greenwich-sage/assets/images/icons/button-arrow.svg" alt="White Right Arrow"/></div>')
+    });
+    jQuery('.after').click(function(){
+      jQuery(this).closest('form.ninja-forms-form').submit();
+      console.log('trigger submit');
+    });
+  }
+
+  jQuery('.form-list-wrapper').click(function(){
+    toggleFormList();
+  });
+
+  jQuery('.form-list li a').click(function(){
+    toggleFormList();
+    var selectedForm = String(jQuery(this).attr('class'));
+    var switchText = jQuery(this).html();
+    jQuery('.current-form-title').html(switchText);
+    jQuery('.display-form li').slideUp();
+    setTimeout(function(){
+      jQuery('.display-form').find('li.' + selectedForm).slideToggle();
+    }, 400);
+  });
+
+  jQuery('html').click(function(){
+    // On click outside of the nav-primary area
+    jQuery('.form-list').slideUp();
+    jQuery('.form-list-wrapper, .form-list, .current-form-title').removeClass('open');
+    adjustRowHeight();
+  });
+  jQuery('.form-list-wrapper').click(function(event){
+      // Prevents clicking inside the nav-primary area from bubbling up the DOM and triggering the above close-menu actions
+      event.stopPropagation();
+  });
+
+  function validateEmail(footerEmail) {
+    if (!footerEmail.trim()) {
+      console.log('no string');
+      jQuery('.ctct-custom-form').addClass('validation-error');
+      jQuery('#error_message .error-text').html('Email address cannot be blank.');
+      jQuery('#error_message, #error_message .error-text').css('display', 'block');
+    } else {
+      console.log(footerEmail);
+      if (/^.+@.+\..+$/.test(footerEmail)) {
+        jQuery('.ctct-custom-form').removeClass('validation-error');
+        jQuery('#error_message, #error_message .error-text').css('display', 'none');
+      } else {
+        jQuery('.ctct-custom-form').addClass('validation-error');
+        jQuery('#error_message .error-text').html('Please enter a valid email address.');
+        jQuery('#error_message, #error_message .error-text').css('display', 'block');
+      }
+    }
+  }
+
+  jQuery('.ctct-custom-form').on('submit', function(){
+    var footerEmail = jQuery(this).find('.footer-signup').val();
+    validateEmail(footerEmail);
+    if ( !jQuery(this).hasClass('validation-error') ) {
+      jQuery(this).hide();
+      jQuery('#success_message, #success_message p').css('display', 'block');
+    }
+  });
+
+  // CALL ALL FUNCTIONS
+  titleOnLoad();
+  adjustRowHeight();
+  fixButtons();
+
+});

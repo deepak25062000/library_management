@@ -1,0 +1,99 @@
+.library_logo {
+    display: flex;
+    margin-left: 50px;
+
+}
+
+.navbar {
+    box-shadow: 10px 1px 5px rgb(44, 43, 43);
+    height: 80px;
+
+}
+
+.library_logo img {
+    margin: 5px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.library_logo h2 {
+    margin-top: 25px;
+}
+
+.main_links {
+    display: flex;
+    font-size: small;
+    padding-left: 20px;
+}
+
+.main {
+    text-decoration: none;
+    padding: 1px 10px;
+    color: black;
+    margin: 5px;
+    transition: 0.5s;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+
+}
+
+.main:hover {
+    background-color: black;
+    color: cornflowerblue;
+    border-radius: 10px;
+
+}
+
+.icons img {
+    height: 25px;
+    width: 20px;
+    margin: 0px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 2px 1px 5px black;
+
+
+}
+
+.icons img {
+    padding: 0px 15px;
+
+}
+
+.icons {
+    margin-left: 30px;
+    margin: 0px 20px;
+    margin-top: 10px;
+}
+
+.navbar_links {
+    height: 30px;
+    padding: 10px;
+    margin-top: 20px;
+    padding-top: 15px;
+    box-shadow: 3px 2px 10px black;
+}
+
+.lis {
+
+    text-decoration: none;
+    color: black;
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+    font-size: 20px;
+
+}
+
+.lis:hover {
+    background-color: black;
+    color: white;
+}
+
+.navbar_links {
+    position: sticky;
+    top: 0;
+}

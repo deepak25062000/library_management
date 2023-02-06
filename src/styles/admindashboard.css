@@ -1,0 +1,89 @@
+.devider {
+    display: flex;
+    padding: 20px;
+}
+
+.devider .section1 {
+    position: sticky;
+    top: 4cm;
+}
+
+.section1 {
+    padding: 10px;
+    position: sticky;
+    height: 550px;
+    width: 500px;
+    text-align: justify;
+    line-height: 60px;
+    border: 1px solid rgb(242, 235, 249);
+    box-shadow: 1px 1px 5px rgb(205, 205, 205);
+}
+
+.container5 {
+    border: 1px solid rgb(242, 235, 249);
+    box-shadow: 1px 1px 5px rgb(205, 205, 205);
+    height: auto;
+}
+
+.section2 {
+    margin: 0px 10px;
+}
+
+.section2 {
+    background: url(/public/images/orenge.jpg);
+    width: 1000px;
+    padding: 20px;
+    height: 400px;
+}
+
+.container5 {
+    background-color: white;
+    margin-top: 350px;
+    height: 300px;
+}
+
+.container5 p {
+    text-align: justify;
+    padding: 20px;
+}
+
+.container5 a {
+    float: left;
+    padding: 20px;
+    color: orange;
+}
+
+
+.section3 {
+    background: url(/public/images/orenge.jpg);
+    margin: 300px 30px;
+    height: 400px;
+    padding: 20px;
+
+}
+
+.container6 {
+    background-color: rgb(255, 255, 255);
+    margin-top: 350px;
+    height: 200px;
+    padding: 20px 40px;
+}
+
+.container6 h3 {
+    text-align: left;
+}
+
+.container6 h2 {
+    text-align: left;
+    text-decoration: underline orange;
+}
+
+.container6 p {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    line-height: 40px;
+}
+
+.container6 a {
+    color: rgb(255, 106, 0);
+    float: left;
+}

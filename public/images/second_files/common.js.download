@@ -1,0 +1,73 @@
+
+;(function($) {
+	
+	"use strict";
+	
+	function getReservations(dateText) {
+		
+		$.get(common_config.admin_ajax, { 'action' : 'get_reserved_rooms', 'date' : dateText }, function(data) {
+					
+			$('#meeing-room-availability').fadeOut('fast', function() {
+
+				$(this).empty().html(data).fadeIn('fast');
+				
+				$('#reservation-select').datepicker({
+					dateFormat: 'mm-dd-yy',
+					maxDate: "+1w",
+					showOn: "button",
+					buttonImage: 'https://cdnjs.cloudflare.com/ajax/libs/topcoat-icons/0.1.0/svg/calendar.svg',
+					buttonImageOnly: true,
+					onSelect: function(dateText) {
+
+						getReservations(dateText);
+
+					}
+
+				});
+
+			});
+
+
+		}, 'json');
+		
+		$('div.nav-primary nav li').on('keyup', function(e) {
+			
+			console.log(e.keyCode);
+
+			if (e.keyCode === 9)
+			{
+				
+				$('div.nav-primary nav li').removeClass('active');
+				$(this).addClass('active');
+				
+				var $class = $(this).data('menu');
+				
+				$('div.submenu-wrapper').find('.menu-feature-wrapper').hide();
+				$('div.submenu-wrapper').find('.'+$class+'.menu-feature-wrapper').show();
+				
+			}
+			
+		});
+		
+	}
+	
+	$(document).ready(function(){
+		
+		$('#reservation-select').datepicker({
+			dateFormat: 'mm/dd/yy',
+			maxDate: "+1w",
+			showOn: "button",
+			buttonImage: 'https://cdnjs.cloudflare.com/ajax/libs/topcoat-icons/0.1.0/svg/calendar.svg',
+			buttonImageOnly: true,
+			onSelect: function(dateText) {
+				
+				getReservations(dateText);
+
+			}
+			
+		});
+		
+	});
+	
+	
+})(jQuery);

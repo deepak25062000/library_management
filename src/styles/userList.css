@@ -1,0 +1,9 @@
+.user_id {
+    height: 400px;
+    width: 300px;
+    display: inline-table;
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgb(162, 160, 160);
+}
