@@ -16,8 +16,6 @@ const AdminLogin = () => {
         } else {
             alert('invalid credentials')
         }
-
-
     }
 
     return (

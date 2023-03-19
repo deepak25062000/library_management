@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams ,useNavigate} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import '../styles/readbook.css'
 
 
@@ -13,7 +13,6 @@ const ReadBook = () => {
             setBooks(data)
         }
         fetchdata()
-
     })
 
     return (
